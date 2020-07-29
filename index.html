@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Interaktywna mapa Polski</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <script src="./snap/Snap.svg-0.5.1/dist/snap.svg-min.js"></script>
@@ -146,25 +147,29 @@
           'stroke-width': 1,
         });
 
+        // Show/hide province name with background color change 
         map[key].mouseover (function() {
-        this.animate({
+          this.animate({
             fill: '#9e9e9e',
             opacity: .5,
             stroke: '#aaa',
             'stroke-width': 1,
-          }, 500);
+          }, 500);    
           
         var name = this.data('name');
-
         var bbox = this.getBBox();
         var text = this.paper.text(bbox.x + (bbox.width / 2), bbox.y + (bbox.height / 2), name).attr({
         font: '10px Arial',
-        'text-anchor' : "middle",
+        'text-anchor': "middle",
+        'fill': 'transparent'
         });
-
+        this + this.paper.selectAll("text").animate({
+          'fill': 'grey',
+          },500);
+        
         this.toFront();
         });
-
+        
         map[key].mouseout(function() {
           this.animate({
             fill: '#bebebe',
@@ -173,12 +178,12 @@
             'stroke-width': 1,
           }, 500);
           this + this.paper.selectAll("text").animate({
-            opacity: 0,
+            opacity: 0       
           },500);
           
-         
         this.toBack();
         });
+        
 
         map[key].click(function() {
           this.attr({
