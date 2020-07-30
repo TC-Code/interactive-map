@@ -10,11 +10,11 @@
     <script src="./snap/Snap.svg-0.5.1/dist/snap.svg-min.js"></script>
     <svg id="svg" style="max-width: 565px; max-height: 533px;"></svg>
     <script>
-      var svg = Snap('#svg');
+      let svg = Snap('#svg');
       svg.attr({ viewBox: '0 0 565 533' });
 
       Snap.plugin(function (Snap, Element, Paper, glob) {
-      var elproto = Element.prototype;
+      let elproto = Element.prototype;
         elproto.toBack = function () {
         this.prependTo(this.paper);
         };
@@ -138,64 +138,117 @@
       path.data('id', 'wielkopolskie');
       map['wielkopolskie'] = path;
 
-      // Add styles for every path
-      for (var key in map) {
-        map[key].attr({
+      let activeEl = null
+
+      for (let key in map) {
+      let path = map[key];
+      let name = path.data('name');
+
+      var bbox = path.getBBox(); 
+      var text = path.paper.text(bbox.x + (bbox.width / 2), bbox.y + (bbox.height / 2), name).attr({
+        font: '10px Arial',
+        'text-anchor' : "middle"
+    });
+      let group = svg.group(map[key], text);
+      map[key] = group;
+      }
+
+      // Set styles for every path
+      for (let key in map) {
+        map[key][0].attr({
           fill: '#bebebe',
           opacity: .5,
           stroke: '#eee',
           'stroke-width': 1,
         });
 
+        //Set text color
+    map[key][1].attr({
+        'fill' : '#333',
+        opacity: 0
+    });
+
+
         // Show/hide province name with background color change 
-        map[key].mouseover (function() {
-          this.animate({
+        map[key].mouseover (function(e) {
+         if(this[0] !== activeEl){
+          this[0].animate({
             fill: '#9e9e9e',
             opacity: .5,
             stroke: '#aaa',
             'stroke-width': 1,
           }, 500);    
-          
-        var name = this.data('name');
-        var bbox = this.getBBox();
-        var text = this.paper.text(bbox.x + (bbox.width / 2), bbox.y + (bbox.height / 2), name).attr({
-        font: '10px Arial',
-        'text-anchor': "middle",
-        'fill': 'transparent'
-        });
-        this + this.paper.selectAll("text").animate({
-          'fill': 'grey',
-          },500);
-        
-        this.toFront();
+          this[1].animate({
+                opacity: .5
+            }, 500);
+
+            this.toFront();
+        }
+        if (activeEl !== null) {
+            activeEl.toFront();
+        }
         });
         
-        map[key].mouseout(function() {
-          this.animate({
+        
+        map[key].mouseout(function(e) {
+
+          if(this !== activeEl){
+          this[0].animate({
             fill: '#bebebe',
             opacity: .5,
             stroke: '#eee',
             'stroke-width': 1,
           }, 500);
-          this + this.paper.selectAll("text").animate({
-            opacity: 0       
-          },500);
+          this[1].animate({
+               opacity: 0
+            }, 500);
+
+            this.toBack();
+          } 
+        });       
+
+        map[key].click(function() {
           
-        this.toBack();
+        if(activeEl !== null && activeEl !== this){
+          activeEl[0].animate({
+            fill: '#bebebe',
+            opacity: .5,
+            stroke: '#eee',
+            'stroke-width': 1,
+          },500);
+          activeEl[1].animate({
+               opacity: 0
+            }, 500);
+          activeEl[0].attr({
+                'filter' : ''
+            })
+        } 
+
+        activeEl = this;
+        this.toFront();
+
+        this[0].animate({
+            fill: '#9e9e9e',
+            opacity: .5,
+            stroke: '#aaa',
+            'stroke-width' : 2,
+          },500);
+          this[1].animate({
+            fill : '#333',
+        }, 500)
+          
+          let f = svg.filter(Snap.filter.shadow(0, 1, 1));
+          this[0].attr({
+            filter: f
+        });
+        
+        
         });
         
 
-        map[key].click(function() {
-          this.attr({
-            stroke: 'pink',
-            'stroke-width': 5,
-          });
-          
-            
-        });
         
       }
-    
+      
     </script>
     
     </svg>
