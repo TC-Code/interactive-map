@@ -8,7 +8,7 @@ module.exports = {
     main: './src/index.js',
   },
   output: {
-    filename: '[name]-[contenthash].js',
+    filename: 'js/[name].js',
     path: path.resolve(__dirname, '../', 'build'),
   },
   devServer: {
@@ -19,8 +19,25 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.txt$/,
+        test: /\.txt$/i,
         use: 'raw-loader',
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.m?js$/,
+        loader: 'babel-loader',
+        exclude: /node-modules/,
+        options: {
+          presets: [['@babel/preset-env']],
+          plugins: ['@babel/plugin-proposal-class-properties'],
+        },
       },
     ],
   },
