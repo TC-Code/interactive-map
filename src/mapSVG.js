@@ -14,13 +14,15 @@ Snap.plugin(function (Snap, Element, Paper, glob) {
   };
 });
 
-let map = [];
+const map = [];
 
 var path = svg.path(
   'M 166.23 98.78 165.17 96.53 163.88 94.67 162.31 93.26 160.19 88.97 158.85 87.36 156.47 85.63 156.45 80.41 156.01 75.16 152.46 64.31 160.25 62.38 161.14 61.01 160.92 58.63 159.87 57.16 159.25 55.77 159.66 54.07 161.14 52.54 161.73 49.97 161.33 45.38 159.6 41.84 155 35.16 151.11 27.3 151 27.09 151 27.09 150.62 27.24 138.94 28.97 135.13 31.36 133.19 33.31 132.04 35.61 132.87 34.81 133.6 34.51 133.92 34.91 133.57 36.2 132.85 37.03 131.95 37.38 131.39 37.14 131.69 36.2 131.69 35.61 125.22 43.96 122.85 48.06 123.67 47.23 124.16 46.63 125.27 46.67 125.93 48.06 125.21 48.9 123.25 49.82 122.47 50.76 121.59 51.12 120.57 51.33 120.06 51.52 120.55 50.8 121.8 49.49 122.5 48.06 119.05 52.14 116.73 53.66 114.81 54.61 117.85 53.65 119.14 53.72 119.03 55.26 119.22 55.4 119.32 55.37 119.38 55.45 119.41 55.92 116.74 55.92 116.74 56.63 117.13 56.63 117.13 57.22 112.2 58.09 110.99 57.22 113.76 55.98 114.46 55.26 108.28 57.34 99.27 58.47 88.43 63.4 77.4 66.38 67.33 69.08 51.78 75.67 39.03 79.02 24.24 85.61 20.23 88.58 18.06 89.74 15.84 90.2 10.31 89.74 8.6 89.09 7.99 88.58 7.07 88.16 6.12 90.72 5.66 91.03 5.12 91.19 6.1 92.4 6.55 93.88 6.55 93.88 6.68 93.86 7.99 94.46 10.68 98.37 11.61 98.99 12.27 99.1 13.15 99.56 13.68 99.64 14.4 99.49 14.45 99.3 13.68 98.99 13.68 98.35 14.48 98.27 15.24 98.02 16.76 97.05 17.27 97.43 17.98 97.1 18.56 96.26 18.67 95.11 18.2 94.5 17.29 94.09 15.62 93.76 16.1 93.14 16.47 92.53 16.85 92.06 17.34 91.87 18.01 92.05 18.48 92.31 18.92 92.17 19.47 91.22 19.57 91.58 19.59 91.66 19.64 91.68 19.82 91.87 19.11 93.72 19.98 94.69 26.18 95.34 27.51 96.09 28.28 97.7 27.93 98.04 27.42 98.72 27.14 98.99 27.43 99.48 27.75 99.83 28.14 100.08 28.63 100.29 28.28 99.64 29.62 98.29 30.05 97.54 30.19 96.4 30.57 96.4 30.39 98.19 30 99.88 29.8 101.78 30.19 104.17 29.32 104.21 28.71 104.57 28.16 104.73 27.52 104.17 26.15 108.27 25.78 110.35 27.52 114.54 28.16 114.88 29.59 115.01 30.19 115.19 30.14 115.74 30.15 116.11 30.19 116.47 29.42 117.08 28.95 117.65 28.7 118.53 28.63 120.04 28.34 120.32 27.69 119.48 25.86 115.94 25.01 114.72 23.96 113.9 20.96 112.82 18.5 112.4 17.88 111.88 16.76 110.67 15.24 109.94 14.45 109.33 13.79 107.5 13.1 106.98 12.32 106.59 11.77 106.1 11.46 106.8 12 107.12 12.18 107.44 12 107.77 11.46 108.09 12.44 108.78 12.37 109.55 11.63 110.24 10.62 110.67 10.08 110.74 10.08 110.74 10.07 110.75 10.14 113.4 9.91 114.87 10.76 116.71 11.93 120.37 12.03 121.3 11.88 124.75 11.92 126.83 12.33 128.77 13.69 130.88 14.27 132.84 15.44 134.82 16.02 139.68 17.2 145.14 17.57 146.9 17.66 147.69 17.69 149.38 17.87 150.3 18.21 150.9 19.06 151.62 19.28 152.15 20.01 152.82 18.55 155.7 18.14 156.32 17.55 156.63 17 157.47 16.6 158.61 16.45 159.85 16.65 161.36 16.98 162.68 17.1 164.03 15.42 169.3 15.27 170.08 14.52 171.76 12.8 173.56 9.51 176.2 6.11 177.98 3.4 180 3.4 180.58 3.74 181.51 4.42 184.8 4.55 185.96 4.32 187.71 3.74 188.83 2.25 190.12 2.89 191.43 3.87 192.19 5.04 192.56 6.28 192.65 7.4 193.15 9.22 195.31 10.75 196.13 16.69 200.52 17.55 201.54 19.47 205.33 20.05 205.89 21.11 206.39 22.72 208.59 26.06 209.92 29.31 213.58 30.67 208.66 31.9 206.82 36.65 206.06 39.48 204.86 43.86 198.68 47.41 190.87 52.88 187.84 62.16 190.93 65.12 190.51 68.55 186.51 70.68 182.47 69.15 182.21 68.04 180.7 71.2 180.53 80.67 177.27 92.19 177.31 95.01 175.24 100.03 168.81 102.96 166.48 106 166.06 108.81 166.68 110.28 171.24 109.26 175.65 112.35 176.68 115.77 178.73 119.26 178.25 122.69 176.91 128.08 171.8 132.61 164.68 140.7 159.94 144.82 158.66 146.44 157.12 147.75 154.78 149.47 152.65 149.12 149.96 147.37 147.72 145.3 146.63 141.08 145.55 137.57 142.14 136.71 138.8 136.65 135.06 137.91 133.27 148.2 133.54 149.88 133.21 151.31 127.22 152.39 124.13 153.86 121.56 155.86 120.67 157.99 120.61 160.08 121.28 159.1 111.05 161.44 108.65 163.1 105.7 162.48 103.7 161.51 102.09 160.39 101.55 160.33 99.69 163.13 98.37 166.23 98.78 z'
 );
 path.data('name', 'Zachodnio-Pomorskie');
 path.data('id', 'zachodniopomorskie');
+path.data('cityId', '023216562000');
+path.data('cityName', 'Szczecin');
 map['zachodniopomorskie'] = path;
 
 var path = svg.path(
@@ -28,6 +30,8 @@ var path = svg.path(
 );
 path.data('name', 'Świętokrzyskie');
 path.data('id', 'swietokrzyskie');
+path.data('cityId', '052615261000');
+path.data('cityName', 'Kielce');
 map['swietokrzyskie'] = path;
 
 var path = svg.path(
@@ -35,6 +39,8 @@ var path = svg.path(
 );
 path.data('name', 'Śląskie');
 path.data('id', 'slaskie');
+path.data('cityId', '012414869000');
+path.data('cityName', 'Katowice');
 map['slaskie'] = path;
 
 var path = svg.path(
@@ -42,6 +48,8 @@ var path = svg.path(
 );
 path.data('name', 'Mazowieckie');
 path.data('id', 'mazowieckie');
+path.data('cityId', '071412865000');
+path.data('cityName', 'Warszawa');
 map['mazowieckie'] = path;
 
 var path = svg.path(
@@ -49,6 +57,8 @@ var path = svg.path(
 );
 path.data('name', 'Warmińsko-Mazurskie');
 path.data('id', 'warminskomazurskie');
+path.data('cityId', '042815662000');
+path.data('cityName', 'Olsztyn');
 map['warminskomazurskie'] = path;
 
 var path = svg.path(
@@ -56,6 +66,8 @@ var path = svg.path(
 );
 path.data('name', 'Pomorskie');
 path.data('id', 'pomorskie');
+path.data('cityId', '042214361000');
+path.data('cityName', 'Gdańsk');
 map['pomorskie'] = path;
 
 var path = svg.path(
@@ -63,6 +75,8 @@ var path = svg.path(
 );
 path.data('name', 'Podlaskie');
 path.data('id', 'podlaskie');
+path.data('cityId', '062013761000');
+path.data('cityName', 'Białystok');
 map['podlaskie'] = path;
 
 var path = svg.path(
@@ -70,6 +84,8 @@ var path = svg.path(
 );
 path.data('name', 'Podkarpackie');
 path.data('id', 'podkarpackie');
+path.data('cityId', '061813563000');
+path.data('cityName', 'Rzeszów');
 map['podkarpackie'] = path;
 
 var path = svg.path(
@@ -77,6 +93,8 @@ var path = svg.path(
 );
 path.data('name', 'Opolskie');
 path.data('id', 'opolskie');
+path.data('cityId', '031613261000');
+path.data('cityName', 'Opole');
 map['opolskie'] = path;
 
 var path = svg.path(
@@ -85,6 +103,8 @@ var path = svg.path(
 
 path.data('name', 'Lubuskie');
 path.data('id', 'lubuskie');
+path.data('cityId', '020811462000');
+path.data('cityName', 'Zielona Góra');
 map['lubuskie'] = path;
 
 var path = svg.path(
@@ -92,6 +112,8 @@ var path = svg.path(
 );
 path.data('name', 'Lubelskie');
 path.data('id', 'lubelskie');
+path.data('cityId', '060611163000');
+path.data('cityName', 'Lublin');
 map['lubelskie'] = path;
 
 var path = svg.path(
@@ -99,7 +121,8 @@ var path = svg.path(
 );
 path.data('name', 'Dolnośląskie');
 path.data('id', 'dolnoslaskie');
-map['dolnoslaskie'] = path;
+path.data('cityId', '030210564000');
+path.data('cityName', 'Wrocław');
 map['dolnoslaskie'] = path;
 
 var path = svg.path(
@@ -107,6 +130,8 @@ var path = svg.path(
 );
 path.data('name', 'Łódzkie');
 path.data('id', 'lodzkie');
+path.data('cityId', '051011661000');
+path.data('cityName', 'Łódź');
 map['lodzkie'] = path;
 
 var path = svg.path(
@@ -114,6 +139,8 @@ var path = svg.path(
 );
 path.data('name', 'Małopolskie');
 path.data('id', 'malopolskie');
+path.data('cityId', '011212161000');
+path.data('cityName', 'Kraków');
 map['malopolskie'] = path;
 
 var path = svg.path(
@@ -121,6 +148,8 @@ var path = svg.path(
 );
 path.data('name', 'Kujawsko-Pomorskie');
 path.data('id', 'kujawskopomorskie');
+path.data('cityId', '040410663000');
+path.data('cityName', 'Toruń');
 map['kujawskopomorskie'] = path;
 
 var path = svg.path(
@@ -128,6 +157,8 @@ var path = svg.path(
 );
 path.data('name', 'Wielkopolskie');
 path.data('id', 'wielkopolskie');
+path.data('cityId', '023016264000');
+path.data('cityName', 'Poznań');
 map['wielkopolskie'] = path;
 
 let activeEl = null;
@@ -257,3 +288,5 @@ for (let key in map) {
     });
   });
 }
+
+export { map };

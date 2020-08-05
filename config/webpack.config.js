@@ -35,8 +35,20 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node-modules/,
         options: {
-          presets: [['@babel/preset-env']],
-          plugins: ['@babel/plugin-proposal-class-properties'],
+          ignore: [/\/core-js/],
+          presets: [
+            ['@babel/preset-env', { modules: false, useBuiltIns: 'usage' }],
+          ],
+          overrides: [
+            {
+              test: './node_modules',
+              sourceType: 'unambiguous',
+            },
+          ],
+          plugins: [
+            '@babel/plugin-proposal-class-properties',
+            '@babel/plugin-transform-runtime',
+          ],
         },
       },
     ],
